@@ -1,0 +1,82 @@
+{
+    "microservices": [
+        {
+            "name": "user-service",
+            "stack": "spring-boot",
+            "healthCheckPath": "/health",
+            "commands": {
+                "run": "mvn spring-boot:run"
+            },
+            "roles": [
+                "user-service-role"
+            ]
+        }
+    ],
+    "microfrontends": [
+        {
+            "name": "user-ui",
+            "customElement": "another-mfe",
+            "stack": "react",
+            "type": "widget",
+            "group": "free",
+            "titles": {
+                "en": "User Widget",
+                "it": "User Widget"
+            },
+            "contextParams": [
+                "page_code"
+            ],
+            "commands": {
+                "run": "npm start"
+            },
+            "apiClaims": [
+                {
+                    "name": "int-api",
+                    "type": "internal",
+                    "serviceName": "user-service"
+                }
+            ],
+            "params": [
+                {
+                    "name": "username",
+                    "description": "username of user"
+                },
+                {
+                    "name": "description",
+                    "description": "description of user"
+                }
+            ],
+            "configMfe": "user-ui-config"
+        },
+        {
+            "name": "user-ui-config",
+            "customElement": "another-mfe-config",
+            "stack": "react",
+            "type": "widget-config",
+            "group": "free",
+            "commands": {
+                "run": "npm install && PORT=3002 npm start"
+            }
+        }
+    ],
+    "name": "entando-codemotion-bundle",
+    "description": "This is an awesome bundle demonstrating the power of Entando bundles",
+    "version": "0.0.1",
+    "type": "bundle",
+    "svc": [
+        "keycloak",
+        "mysql"
+    ],
+    "global": {
+        "nav": [
+            {
+                "label": {
+                    "en": "Entando Developers",
+                    "it": "Entando Developers"
+                },
+                "target": "external",
+                "url": "https://developer.entando.com/"
+            }
+        ]
+    }
+}
