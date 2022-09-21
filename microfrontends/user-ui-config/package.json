@@ -1,6 +1,6 @@
 {
-  "name": "another-mfe-config",
-  "version": "2.1.0",
+  "name": "user-ui-config",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",

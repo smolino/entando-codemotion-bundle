@@ -1,11 +1,11 @@
 import { useContext, useState } from 'react';
 import logo from './react-logo.svg';
-import './AnotherMfe.css';
+import './UserUi.css';
 import KeycloakContext from './KeycloakContext';
 
 const API_TIMESTAMP_PATH = '/api/timestamp'
 
-function AnotherMfe({ config }) {
+function UserUi({ config }) {
   const { systemParams, contextParams, params } = config || {};
   const { api } = systemParams || {};
 
@@ -89,4 +89,4 @@ function AnotherMfe({ config }) {
   );
 }
 
-export default AnotherMfe;
+export default UserUi;

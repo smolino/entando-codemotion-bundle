@@ -28,7 +28,7 @@
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <another-mfe-config></another-mfe-config>
+    <user-ui-config></user-ui-config>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
@@ -44,8 +44,8 @@
       function injectConfigIntoMfe() {
         fetch('%PUBLIC_URL%/mfe-config.json').then(async response => {
           const config = await response.json();
-          const anotherMfeEl = document.getElementsByTagName('another-mfe-config')[0];
-          anotherMfeEl.config = config;
+          const userUiConfigEl = document.getElementsByTagName('user-ui-config')[0];
+          userUiConfigEl.config = config;
         })
       }
       window.onload = () => injectConfigIntoMfe()

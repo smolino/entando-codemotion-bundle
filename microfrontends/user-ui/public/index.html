@@ -67,14 +67,14 @@
       window.entando.widgets = {
         ...(window.entando.widgets || {}),
       };
-      window.entando.widgets['another-mfe'] = {
-        basePath: "http://quickstart-entando.awsentando.net/entando-de-app/cmsresources/jeff-ent-bundle/another-mfe/"
+      window.entando.widgets['user-ui'] = {
+        basePath: "http://quickstart-entando.awsentando.net/entando-de-app/cmsresources/jeff-ent-bundle/user-ui/"
       };
     </script>
   </head>
   <body onLoad="onLoad();">
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <another-mfe></another-mfe>
+    <user-ui></user-ui>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
@@ -90,8 +90,8 @@
       function injectConfigIntoMfe() {
         fetch('%PUBLIC_URL%/mfe-config.json').then(async response => {
           const config = await response.text()
-          const anotherMfeEl = document.getElementsByTagName('another-mfe')[0]
-          anotherMfeEl.setAttribute('config', config)
+          const userUiEl = document.getElementsByTagName('user-ui')[0]
+          userUiEl.setAttribute('config', config)
         })
       }
 

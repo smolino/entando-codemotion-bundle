@@ -1,1 +1,1 @@
-import './custom-elements/AnotherMfeConfigElement';
+import './custom-elements/UserUiConfigElement';

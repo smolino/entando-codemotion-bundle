@@ -1,7 +1,8 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import AnotherMfe from './AnotherMfe';
+import UserUi from './UserUi';
 import KeycloakContext from './KeycloakContext';
+import UserUi from './UserUi';
 
 const keycloak = {
   token: 'faketoken',
@@ -36,7 +37,7 @@ test('displays fetched timestamps when "Get timestamps" button is clicked', asyn
 
   render(
     <KeycloakContext.Provider value={keycloak}>
-      <AnotherMfe config={config} />
+      <UserUi config={config} />
     </KeycloakContext.Provider>
   );
 
@@ -56,7 +57,7 @@ test('displays page code', async () => {
 
   render(
     <KeycloakContext.Provider value={keycloak}>
-      <AnotherMfe config={config} />
+      <UserUi config={config} />
     </KeycloakContext.Provider>
   );
 
@@ -73,7 +74,7 @@ test('displays username and description', async () => {
 
   render(
     <KeycloakContext.Provider value={keycloak}>
-      <AnotherMfe config={config} />
+      <UserUi config={config} />
     </KeycloakContext.Provider>
   );
 
@@ -86,7 +87,7 @@ test('invokes keycloak login when button is clicked and token is expired', async
 
   render(
     <KeycloakContext.Provider value={keycloak}>
-      <AnotherMfe config={{}} />
+      <UserUi config={{}} />
     </KeycloakContext.Provider>
   );
 

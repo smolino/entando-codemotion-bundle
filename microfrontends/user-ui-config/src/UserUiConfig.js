@@ -1,8 +1,8 @@
 import React from 'react';
-import './AnotherMfeConfig.css';
+import './UserUiConfig.css';
 import ReactLogo from './ReactLogo';
 
-class AnotherMfeConfig extends React.Component {
+class UserUiConfig extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -40,4 +40,4 @@ class AnotherMfeConfig extends React.Component {
   }
 }
 
-export default AnotherMfeConfig;
+export default UserUiConfig;

@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import AnotherMfeConfig from '../AnotherMfeConfig';
-class AnotherMfeConfigElement extends HTMLElement {
+import UserUiConfig from '../UserUiConfig';
+class UserUiConfigElement extends HTMLElement {
   constructor() {
     super();
     this.reactRootRef = React.createRef();
@@ -23,8 +23,8 @@ class AnotherMfeConfigElement extends HTMLElement {
   }
 
   render() {
-    ReactDOM.render(<AnotherMfeConfig ref={this.reactRootRef} />, this.mountPoint);
+    ReactDOM.render(<UserUiConfig ref={this.reactRootRef} />, this.mountPoint);
   }
 }
 
-customElements.define('another-mfe-config', AnotherMfeConfigElement);
+customElements.define('user-ui-config', UserUiConfigElement);

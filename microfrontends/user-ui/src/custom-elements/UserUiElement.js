@@ -1,7 +1,7 @@
 import './public-path';
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import AnotherMfe from '../AnotherMfe';
+import UserUi from '../UserUi';
 import KeycloakContext from '../KeycloakContext';
 
 const KEYCLOAK_EVENT_TYPE = 'keycloak';
@@ -17,7 +17,7 @@ const ATTRIBUTES = {
   config: 'config'
 };
 
-class AnotherMfeElement extends HTMLElement {
+class UserUiElement extends HTMLElement {
   mountPoint;
   root;
 
@@ -46,7 +46,7 @@ class AnotherMfeElement extends HTMLElement {
   }
 
   attributeChangedCallback(attribute, oldValue, newValue) {
-    if (!AnotherMfeElement.observedAttributes.includes(attribute)) {
+    if (!UserUiElement.observedAttributes.includes(attribute)) {
       throw new Error(`Untracked changed attributes: ${attribute}`)
     }
     if (this.mountPoint && newValue !== oldValue) {
@@ -69,10 +69,10 @@ class AnotherMfeElement extends HTMLElement {
 
     this.root.render(
       <KeycloakContext.Provider value={this.keycloak}>
-        <AnotherMfe config={config} />
+        <UserUi config={config} />
       </KeycloakContext.Provider>
     );
   }
 }
 
-customElements.define('another-mfe', AnotherMfeElement);
+customElements.define('user-ui', UserUiElement);
