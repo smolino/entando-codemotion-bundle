@@ -1,40 +1,36 @@
 import React from 'react';
 import './UserUiConfig.css';
-import ReactLogo from './ReactLogo';
 
 class UserUiConfig extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: '',
-      description: '',
+      headerColor: '',
     };
   }
 
-  handleChangeUsername(value) {
+  handleChangeHeaderColor(value) {
     this.setState(prevState => ({
       ...prevState,
-      username: value,
+      headerColor: value,
     }));
   }
-
-  handleChangeDescription(value) {
-    this.setState(prevState => ({
-      ...prevState,
-      description: value,
-    }));
-  }
-
   render() {
-    const { username, description } = this.state;
+    const { headerColor } = this.state;
     return (
       <div className="App">
         <header className="App-header">
-          <ReactLogo className="App-logo" />
-          MFE Form
+          <h2>User MFE Config</h2>
         </header>
-          <div><label htmlFor="username">Username:</label> <input id="username" name="username" onChange={e => this.handleChangeUsername(e.target.value)} defaultValue={username} /></div>
-          <div><label htmlFor="description">Description:</label> <input id="description" name="description" onChange={e => this.handleChangeDescription(e.target.value)} defaultValue={description} /></div>
+        <br/>
+          <div><label htmlFor="headerColor">Header Color:</label>
+            <select id="headerColor" name="headerColor" onChange={e => this.handleChangeHeaderColor(e.target.value)} defaultValue={headerColor} >
+              <option value="Blue">Blue</option>
+              <option value="Black">Black</option>
+              <option value="Red">Red</option>
+              <option value="Orange">Orange</option>
+            </select>
+          </div>
       </div>
     );
   }

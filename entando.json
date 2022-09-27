@@ -9,13 +9,14 @@
             },
             "roles": [
                 "user-service-role"
-            ]
+            ],
+            "dbms": "mysql"
         }
     ],
     "microfrontends": [
         {
             "name": "user-ui",
-            "customElement": "another-mfe",
+            "customElement": "user-ui",
             "stack": "react",
             "type": "widget",
             "group": "free",
@@ -38,19 +39,15 @@
             ],
             "params": [
                 {
-                    "name": "username",
-                    "description": "username of user"
-                },
-                {
-                    "name": "description",
-                    "description": "description of user"
+                    "name": "headerColor",
+                    "description": "header color"
                 }
             ],
             "configMfe": "user-ui-config"
         },
         {
             "name": "user-ui-config",
-            "customElement": "another-mfe-config",
+            "customElement": "user-ui-config",
             "stack": "react",
             "type": "widget-config",
             "group": "free",
@@ -61,7 +58,7 @@
     ],
     "name": "entando-codemotion-bundle",
     "description": "This is an awesome bundle demonstrating the power of Entando bundles",
-    "version": "0.0.1",
+    "version": "1.0.3",
     "type": "bundle",
     "svc": [
         "keycloak",
