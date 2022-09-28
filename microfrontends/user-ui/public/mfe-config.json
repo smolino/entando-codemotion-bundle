@@ -2,7 +2,7 @@
     "systemParams": {
         "api": {
             "int-api": {
-                "url": "http://localhost:8080"
+                "url": "http://localhost:8081"
             }
         }
     },
@@ -10,7 +10,6 @@
         "page_code": "my_mfe_page"
     },
     "params": {
-        "username": "adionisi",
-        "description": "Tech Lead Entando"
+        "headerColor": "blue"
     }
 }
