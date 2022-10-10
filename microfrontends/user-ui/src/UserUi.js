@@ -101,6 +101,10 @@ function UserUi({ config }) {
     }
   };
 
+  const handleLogoutClick = () => {
+    keycloak.logout();
+  }
+
   useEffect(() => {
     console.log(`useEffect ${keycloak.authenticated}`);
     handleFetchUsers();
@@ -114,6 +118,11 @@ function UserUi({ config }) {
       <br/>
       <div> { keycloak.authenticated && (
             <>
+              {
+                process.env.NODE_ENV === 'development' && (
+                  <button onClick={handleLogoutClick}>Log out</button>
+                )
+              }
               <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
                 <Alert onClose={handleClose} severity='success'>
                   User Created!

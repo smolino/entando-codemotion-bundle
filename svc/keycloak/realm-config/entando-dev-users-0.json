@@ -29,7 +29,8 @@
       "requiredActions": [],
       "realmRoles": ["offline_access", "uma_authorization"],
       "clientRoles": {
-        "account": ["view-profile", "manage-account"]
+        "account": ["view-profile", "manage-account"],
+        "web_app": ["user-service-role"]
       },
       "notBefore": 0,
       "groups": ["/Users", "/Admins"]
@@ -62,7 +63,8 @@
       "requiredActions": [],
       "realmRoles": ["offline_access", "uma_authorization"],
       "clientRoles": {
-        "account": ["view-profile", "manage-account"]
+        "account": ["view-profile", "manage-account"],
+        "web_app": ["user-service-role"]
       },
       "notBefore": 0,
       "groups": ["/Users"]
