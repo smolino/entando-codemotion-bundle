@@ -37,7 +37,7 @@
   <properties>
     <maven.compiler.fork>true</maven.compiler.fork>
     <maven.compiler.forkmode>never</maven.compiler.forkmode>
-    <javax.net.ssl.trustStore>/microservices/cacerts</javax.net.ssl.trustStore>
+    <javax.net.ssl.trustStore>microservices/cacerts</javax.net.ssl.trustStore>
     <javax.net.ssl.trustStorePassword>changeit</javax.net.ssl.trustStorePassword>
   </properties>
   <!-- Other configurations may exist here -->
