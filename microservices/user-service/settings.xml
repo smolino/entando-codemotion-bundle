@@ -1,0 +1,44 @@
+<settings>
+  <!-- Other configurations may exist here -->
+  <repositories>
+    <repository>
+      <id>nexus-public-releases</id>
+      <url>https://nexus-jx.apps.serv.run/repository/maven-releases/</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+      <layout>default</layout>
+    </repository>
+  </repositories>
+  <servers>
+    <server>
+      <id>nexus-public</id>
+      <!-- No need for username and password for public repositories -->
+    </server>
+  </servers>
+  <profiles>
+    <profile>
+      <id>nexus-public-profile</id>
+      <repositories>
+        <repository>
+          <id>nexus-public-releases</id>
+          <url>https://nexus-jx.apps.serv.run/repository/maven-releases/</url>
+        </repository>
+      </repositories>
+    </profile>
+  </profiles>
+  <activeProfiles>
+    <activeProfile>nexus-public-profile</activeProfile>
+  </activeProfiles>
+  <!-- Set custom cacerts file path -->
+  <properties>
+    <maven.compiler.fork>true</maven.compiler.fork>
+    <maven.compiler.forkmode>never</maven.compiler.forkmode>
+    <javax.net.ssl.trustStore>/home/ent/.m2/cacerts</javax.net.ssl.trustStore>
+    <javax.net.ssl.trustStorePassword>changeit</javax.net.ssl.trustStorePassword>
+  </properties>
+  <!-- Other configurations may exist here -->
+</settings>
