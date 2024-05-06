@@ -41,4 +41,5 @@
     <javax.net.ssl.trustStorePassword>changeit</javax.net.ssl.trustStorePassword>
   </properties>
   <!-- Other configurations may exist here -->
+  <localRepository>/maven-settings</localRepository>
 </settings>
