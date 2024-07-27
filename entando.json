@@ -10,7 +10,33 @@
             "roles": [
                 "user-service-role"
             ],
-            "dbms": "mysql"
+            "dbms": "mysql",
+            "env": [
+                {
+                    "name": "ISTRUTTORIA_SERVICE_BASEURL",
+                    "value": "https://entando.com"
+                },
+                {
+                    "name": "LOG_LEVEL",
+                    "value": "DEBUG"
+                },
+                {
+                    "name": "TIGRAN_USER",
+                    "value": "api_user"
+                },
+                {
+                    "name": "TIGRAN_PASSWORD",
+                    "value": "sHN23d"
+                },
+                {
+                    "name": "TIGRAN_BASE_URL",
+                    "value": "https://entando.com/"
+                },
+                {
+                    "name": "TIGRAN_ANALYSIS_MAIL",
+                    "value": "entando@modefinance.com"
+                }
+            ]
         }
     ],
     "microfrontends": [
