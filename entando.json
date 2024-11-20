@@ -68,7 +68,7 @@
     ],
     "name": "entando-codemotion-bundle",
     "description": "This is an awesome bundle demonstrating the power of Entando bundles",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "type": "bundle",
     "svc": [
         "keycloak",
