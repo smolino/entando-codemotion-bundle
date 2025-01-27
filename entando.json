@@ -38,7 +38,7 @@
                 "page_code"
             ],
             "commands": {
-                "run": "npm install && npm start"
+                "run": "npm ci && npm start"
             },
             "apiClaims": [
                 {
@@ -62,7 +62,7 @@
             "type": "widget-config",
             "group": "free",
             "commands": {
-                "run": "npm install && PORT=3002 npm start"
+                "run": "npm ci && PORT=3002 npm start"
             }
         }
     ],
