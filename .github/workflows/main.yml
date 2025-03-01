@@ -16,12 +16,37 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Prepare workspace directory
+        run: |
+          mkdir -p .entando/logs
+          chmod -R 777 .entando
+
       - name: Run Entando Bundle Pack
         run: |
           docker run --rm \
             -v "$(pwd):/workspace" \
             -w /workspace \
-            -v "/tmp/entando-cache:/.cache" \
             -u 0:0 \
             docker.io/entando/ent:v7.3.0-mt \
-            ent bundle pack --org=mescalo
+            ent bundle pack
+
+  publish-entando-bundle:
+    runs-on: ubuntu-latest
+    needs: run-entando-bundle
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Prepare workspace directory
+        run: |
+          mkdir -p .entando/logs
+          chmod -R 777 .entando
+
+      - name: Run Entando Bundle Publish
+        run: |
+          docker run --rm \
+            -v "$(pwd):/workspace" \
+            -w /workspace \
+            -u 0:0 \
+            docker.io/entando/ent:v7.3.0-mt \
+            ent bundle publish
