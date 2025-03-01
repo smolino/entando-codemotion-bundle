@@ -50,3 +50,31 @@ jobs:
             -u 0:0 \
             docker.io/entando/ent:v7.3.0-mt \
             ent bundle publish --org=mescalo
+
+  install-entando-bundle:
+    runs-on: ubuntu-latest
+    needs: publish-entando-bundle
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Login to OpenShift
+        run: |
+          oc login --server=${{ secrets.OPENSHIFT_SERVER }} \
+            --username=${{ secrets.OPENSHIFT_USER }} \
+            --password=${{ secrets.OPENSHIFT_PASSWORD }} \
+            --insecure-skip-tls-verify=true
+
+      - name: Prepare workspace directory
+        run: |
+          mkdir -p .entando/logs
+          chmod -R 777 .entando
+
+      - name: Run Entando Bundle Install
+        run: |
+          docker run --rm \
+            -v "$(pwd):/workspace" \
+            -w /workspace \
+            -u 0:0 \
+            docker.io/entando/ent:v7.3.0-mt \
+            sh -c "ent appname portali && ent namespace portali-entando && ent bundle install"
