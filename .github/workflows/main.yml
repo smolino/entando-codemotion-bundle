@@ -22,7 +22,7 @@ jobs:
             -v "$(pwd):/workspace" \
             -w /workspace \
             -v "/tmp/entando-cache:/.cache" \
-            -u 0:0 \
+            -u 1000:1000 \
             docker.io/entando/ent:v7.3.0-mt \
             ent bundle pack --org=mescalo \
             ent bundle publish
