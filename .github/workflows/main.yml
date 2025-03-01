@@ -49,4 +49,4 @@ jobs:
             -w /workspace \
             -u 0:0 \
             docker.io/entando/ent:v7.3.0-mt \
-            ent bundle publish
+            ent bundle publish --org=mescalo
