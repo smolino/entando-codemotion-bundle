@@ -24,5 +24,4 @@ jobs:
             -v "/tmp/entando-cache:/.cache" \
             -u 0:0 \
             docker.io/entando/ent:v7.3.0-mt \
-            ent bundle pack --org=mescalo \
-            ent bundle publish
+            ent bundle pack --org=mescalo
