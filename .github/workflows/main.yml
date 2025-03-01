@@ -28,7 +28,7 @@ jobs:
             -w /workspace \
             -u 0:0 \
             docker.io/entando/ent:v7.3.0-mt \
-            ent bundle pack
+            ent bundle pack --org=mescalo
 
   publish-entando-bundle:
     runs-on: ubuntu-latest
