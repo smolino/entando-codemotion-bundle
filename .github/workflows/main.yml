@@ -21,6 +21,6 @@ jobs:
           docker run --rm \
             -v "$(pwd):/workspace" \
             -w /workspace \
-            -u 65532:65532 \  # Run as user 65532
+            -u 65532:65532 \
             docker.io/entando/ent:v7.3.0-mt \
             ent bundle pack
