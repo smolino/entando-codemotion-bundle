@@ -21,13 +21,6 @@ jobs:
           mkdir -p .entando/logs
           chmod -R 777 .entando
 
-      - name: Login to OpenShift
-        run: |
-          oc login --server=${{ secrets.OPENSHIFT_SERVER }} \
-            --username=${{ secrets.OPENSHIFT_USER }} \
-            --password=${{ secrets.OPENSHIFT_PASSWORD }} \
-            --insecure-skip-tls-verify=true
-
       - name: Run Entando Bundle Pack
         run: |
           docker run --rm \
@@ -35,4 +28,4 @@ jobs:
             -w /workspace \
             -u 0:0 \
             docker.io/mescalo/ent:github1 \
-            sh -c "ent bundle pack --org=mescalo && ent bundle publish --org=mescalo && ent appname portali && ent namespace portali-entando && ent bundle install"
+            sh -c "oc login --server=${{ secrets.OPENSHIFT_SERVER }} --username=${{ secrets.OPENSHIFT_USER }} --password=${{ secrets.OPENSHIFT_PASSWORD }} --insecure-skip-tls-verify=true && ent bundle pack --org=mescalo && ent bundle publish --org=mescalo && ent appname portali && ent namespace portali-entando && ent bundle install"
