@@ -22,6 +22,10 @@ jobs:
           chmod -R 777 .entando
 
       - name: Run Entando Bundle Pack
+        env:
+          OPENSHIFT_SERVER: ${{ secrets.OPENSHIFT_SERVER }}
+          OPENSHIFT_USER: ${{ secrets.OPENSHIFT_USER }}
+          OPENSHIFT_PASSWORD: ${{ secrets.OPENSHIFT_PASSWORD }}
         run: |
           docker run --rm \
             -v "$(pwd):/workspace" \
