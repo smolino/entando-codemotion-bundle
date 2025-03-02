@@ -40,7 +40,3 @@ jobs:
           ent appname portali
           ent namespace portali-entando
           ent bundle install --conflict-strategy=OVERRIDE
-            -w /workspace \
-            -u 0:0 \
-            docker.io/entando/ent:v7.3.0-mt \
-            sh -c "echo finisched"
