@@ -16,6 +16,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Authenticate with OpenShift API
+        run: |
+          TOKEN=$(curl -k -X POST -u "${{ secrets.OPENSHIFT_USER }}:${{ secrets.OPENSHIFT_PASSWORD }}" \
+            "${{ secrets.OPENSHIFT_SERVER }}/oauth/authorize?response_type=token&client_id=openshift-challenging-client" | jq -r .access_token)
+          echo "TOKEN=$TOKEN" >> $GITHUB_ENV
+
       - name: Prepare workspace directory
         run: |
           mkdir -p .entando/logs
@@ -29,51 +35,3 @@ jobs:
             -u 0:0 \
             docker.io/entando/ent:v7.3.0-mt \
             sh -c "ent bundle pack --org=mescalo && ent bundle publish --org=mescalo && ent appname portali && ent namespace portali-entando && ent bundle install"
-
-  publish-entando-bundle:
-    runs-on: ubuntu-latest
-    needs: run-entando-bundle
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Prepare workspace directory
-        run: |
-          mkdir -p .entando/logs
-          chmod -R 777 .entando
-
-      - name: Run Entando Bundle Publish
-        run: |
-          docker run --rm \
-            -v "$(pwd):/workspace" \
-            -w /workspace \
-            -u 0:0 \
-            docker.io/entando/ent:v7.3.0-mt \
-            ent bundle publish --org=mescalo
-
-  install-entando-bundle:
-    runs-on: ubuntu-latest
-    needs: publish-entando-bundle
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Authenticate with OpenShift API
-        run: |
-          TOKEN=$(curl -k -X POST -u "${{ secrets.OPENSHIFT_USER }}:${{ secrets.OPENSHIFT_PASSWORD }}" \
-            "${{ secrets.OPENSHIFT_SERVER }}/oauth/authorize?response_type=token&client_id=openshift-challenging-client" | jq -r .access_token)
-          echo "TOKEN=$TOKEN" >> $GITHUB_ENV
-
-      - name: Prepare workspace directory
-        run: |
-          mkdir -p .entando/logs
-          chmod -R 777 .entando
-
-      - name: Run Entando Bundle Install
-        run: |
-          docker run --rm \
-            -v "$(pwd):/workspace" \
-            -w /workspace \
-            -u 0:0 \
-            docker.io/entando/ent:v7.3.0-mt \
-            sh -c "ent appname portali && ent namespace portali-entando && ent bundle install --org=mescalo"
