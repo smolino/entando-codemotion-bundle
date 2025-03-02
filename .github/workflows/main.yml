@@ -76,4 +76,4 @@ jobs:
             -w /workspace \
             -u 0:0 \
             docker.io/entando/ent:v7.3.0-mt \
-            sh -c "ent appname portali && ent namespace portali-entando && ent bundle install"
+            sh -c "ent appname portali && ent namespace portali-entando && ent bundle install --org=mescalo"
