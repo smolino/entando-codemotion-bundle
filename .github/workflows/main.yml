@@ -27,9 +27,10 @@ jobs:
           OPENSHIFT_USER: ${{ secrets.OPENSHIFT_USER }}
           OPENSHIFT_PASSWORD: ${{ secrets.OPENSHIFT_PASSWORD }}
         run: |
+          oc login --server="$OPENSHIFT_SERVER" --username="$OPENSHIFT_USER" --password="$OPENSHIFT_PASSWORD" --insecure-skip-tls-verify=true
           docker run --rm \
             -v "$(pwd):/workspace" \
             -w /workspace \
             -u 0:0 \
             docker.io/mescalo/ent:github1 \
-            sh -c "oc login --server=${{ secrets.OPENSHIFT_SERVER }} --username=${{ secrets.OPENSHIFT_USER }} --password=${{ secrets.OPENSHIFT_PASSWORD }} --insecure-skip-tls-verify=true && ent bundle pack --org=mescalo && ent bundle publish --org=mescalo && ent appname portali && ent namespace portali-entando && ent bundle install"
+            sh -c "ent bundle pack --org=mescalo && ent bundle publish --org=mescalo && ent appname portali && ent namespace portali-entando && ent bundle install"
