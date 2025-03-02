@@ -27,7 +27,7 @@ jobs:
             -v "$(pwd):/workspace" \
             -w /workspace \
             -u 0:0 \
-            docker.io/entando/ent:v7.3.0-mt \
+            docker.io/mescalo/ent:github \
             ent bundle pack --org=mescalo
 
   publish-entando-bundle:
@@ -48,7 +48,7 @@ jobs:
             -v "$(pwd):/workspace" \
             -w /workspace \
             -u 0:0 \
-            docker.io/entando/ent:v7.3.0-mt \
+            docker.io/mescalo/ent:github \
             ent bundle publish --org=mescalo
 
   install-entando-bundle:
@@ -76,5 +76,5 @@ jobs:
             -v "$(pwd):/workspace" \
             -w /workspace \
             -u 0:0 \
-            docker.io/entando/ent:v7.3.0-mt \
+            docker.io/mescalo/ent:github \
             sh -c "ent appname portali && ent namespace portali-entando && ent bundle install"
