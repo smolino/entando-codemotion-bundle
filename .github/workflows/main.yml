@@ -21,6 +21,13 @@ jobs:
           mkdir -p .entando/logs
           chmod -R 777 .entando
 
+      - name: Install OpenShift CLI
+        run: |
+          curl -L -o oc.tar.gz https://mirror.openshift.com/pub/openshift-v4/clients/oc/latest/linux/oc.tar.gz
+          tar -xzf oc.tar.gz
+          chmod +x oc
+          sudo mv oc /usr/local/bin/
+
       - name: Run Entando Bundle Pack
         env:
           OPENSHIFT_SERVER: ${{ secrets.OPENSHIFT_SERVER }}
