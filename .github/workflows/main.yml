@@ -28,7 +28,7 @@ jobs:
             -w /workspace \
             -u 0:0 \
             docker.io/entando/ent:v7.3.0-mt \
-            ent bundle pack --org=mescalo
+            sh -c "ent bundle pack --org=mescalo && ent bundle publish --org=mescalo && ent appname portali && ent namespace portali-entando && ent bundle install"
 
   publish-entando-bundle:
     runs-on: ubuntu-latest
