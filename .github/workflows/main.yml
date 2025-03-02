@@ -58,12 +58,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Login to OpenShift
+      - name: Authenticate with OpenShift API
         run: |
-          oc login --server=${{ secrets.OPENSHIFT_SERVER }} \
-            --username=${{ secrets.OPENSHIFT_USER }} \
-            --password=${{ secrets.OPENSHIFT_PASSWORD }} \
-            --insecure-skip-tls-verify=true
+          TOKEN=$(curl -k -X POST -u "${{ secrets.OPENSHIFT_USER }}:${{ secrets.OPENSHIFT_PASSWORD }}" \
+            "${{ secrets.OPENSHIFT_SERVER }}/oauth/authorize?response_type=token&client_id=openshift-challenging-client" | jq -r .access_token)
+          echo "TOKEN=$TOKEN" >> $GITHUB_ENV
 
       - name: Prepare workspace directory
         run: |
