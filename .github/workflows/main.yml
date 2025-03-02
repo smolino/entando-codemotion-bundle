@@ -27,6 +27,15 @@ jobs:
           tar -xzf oc.tar.gz
           chmod +x oc
           sudo mv oc /usr/local/bin/
+          bash <(curl -sL "https://get.entando.org/cli") --release="v7.3.0" --cli-version="v7.3.1"
+          source "$HOME/.entando/activate" --force
+          ent check-develop --lenient
+          ent bundle pack --org=mescalo
+          ent bundle publish --org=mescalo
+          ent appname portali
+          ent namespace portali-entando
+          ent bundle install --conflict-strategy=OVERRIDE
+          
 
       - name: Run Entando Bundle Pack
         env:
@@ -40,4 +49,4 @@ jobs:
             -w /workspace \
             -u 0:0 \
             docker.io/entando/ent:v7.3.0-mt \
-            sh -c "ent bundle pack --org=mescalo && ent bundle publish --org=mescalo && ent appname portali && ent namespace portali-entando && ent bundle install"
+            sh -c "echo finisched"
