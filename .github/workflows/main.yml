@@ -27,7 +27,7 @@ jobs:
           OPENSHIFT_USER: ${{ secrets.OPENSHIFT_USER }}
           OPENSHIFT_PASSWORD: ${{ secrets.OPENSHIFT_PASSWORD }}
         run: |
-          curl -L -o oc.tar.gz https://mirror.openshift.com/pub/openshift-v4/clients/oc/latest/linux/oc.tar.gz
+          curl -L -o oc.tar.gz https://mirror.openshift.com/pub/openshift-v4/clients/oc/4.6.0-202005061824.git.1.7376912.el7/linux/oc.tar.gz
           tar -xzf oc.tar.gz
           chmod +x oc
           sudo mv oc /usr/local/bin/
