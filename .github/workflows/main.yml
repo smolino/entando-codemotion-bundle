@@ -45,6 +45,7 @@ jobs:
           source "$HOME/.entando/activate" --force
           ent check-env develop --lenient
           ent --debug bundle pack --org=mescalo
+          cat /home/runner/work/entando-codemotion-bundle/entando-codemotion-bundle/.entando/logs/user-ui.log
           ent bundle publish
           ent appname portali
           ent namespace portali-entando
