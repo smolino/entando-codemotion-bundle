@@ -43,6 +43,7 @@ jobs:
           bash <(curl -sL "https://get.entando.org/cli") --release="v7.3.0" --cli-version="v7.3.1"
           source "$HOME/.entando/activate" --force
           ent check-env develop --lenient
+          npm install
           ent --debug bundle pack --org=mescalo --stdout
           ent bundle publish
           ent appname portali
