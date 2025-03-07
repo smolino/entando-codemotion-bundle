@@ -48,5 +48,6 @@ jobs:
           ent bundle publish
           ent appname entandoia
           ent namespace entandoia
-          ent bundle generate-cr > bundle.yaml
-          oc apply -f bundle.yaml -n entandoia
+          #ent bundle generate-cr > bundle.yaml
+          #oc apply -f bundle.yaml -n entandoia
+          ent bundle install --conflict-strategy=OVERRIDE
