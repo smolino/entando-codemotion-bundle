@@ -49,4 +49,3 @@ jobs:
           ent namespace portali-entando
           ent bundle generate-cr > bundle.yaml
           oc apply -f bundle.yaml -n portali-entando
-          ent bundle install --conflict-strategy=OVERRIDE
