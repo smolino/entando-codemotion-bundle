@@ -38,7 +38,7 @@
                 "page_code"
             ],
             "commands": {
-                "run": "npm ci && npm start"
+                "run": "npm install && npm start"
             },
             "apiClaims": [
                 {
